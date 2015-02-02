@@ -1,0 +1,304 @@
+// main style sheet for app
+
+@import "../../../node_modules/nib/index"
+
+// fonts
+@font-face
+  font-family Inconsolata;
+  font-style normal;
+  src: url('../fonts/Inconsolata/Inconsolata-Bold.ttf'), url('../fonts/Inconsolata/Inconsolata-Regular.ttf')
+  src: local('Inconsolata Regular')url('../fonts/Inconsolata/Inconsolata-Regular.ttf') format('truetype');
+
+
+
+
+// colors
+$bodyBkg = rgb(57, 62, 80)
+$chromeBkg = darken($bodyBkg, 20%)
+$builtBranchColor = rgb(5, 214, 243)
+$lighterLinkColor = lighten($builtBranchColor, 50%)
+$subtextGray = darken(white, 20%)
+$deleteColor = rgb(214, 38, 38)
+$buildColor = rgb(12, 228, 12)
+$actionButtonColor = rgb(255,255,255)
+$transparentActionButtonColor = rgba(255,255,255,.5)
+
+// sizing
+$largeFontSize = 21px
+$smallFontSize = $largeFontSize - 4
+$smallestFontSize = $smallFontSize - 3
+$chromeHeight = 35px
+$mainListWidth = 70%
+$actionButtonWidth = 110px
+$statusIconWidth = 10px
+$buttonBorderRadius = 3px
+
+line-height-and-height($height)
+	line-height $height
+	height $height
+
+body
+	background-color $bodyBkg
+	color whitesmoke
+	font-family sans-serif
+.app-container
+	height 100%
+	width 100%
+	position relative
+
+.chrome
+	background-color $chromeBkg
+	line-height-and-height($chromeHeight)
+	span
+		padding-left 15px
+	.logo, .catch-phrase
+		font-family Inconsolata
+	.logo a
+		color whitesmoke
+		font-size $largeFontSize
+		cursor pointer
+		&:hover
+			text-decoration underline
+	.catch-phrase
+		font-size $smallFontSize - 3
+		color $subtextGray
+	.git-link
+		float right
+		margin-right 20px
+
+.git-link
+	font-size: $largeFontSize + 10
+	a
+		color $builtBranchColor
+		padding 10px 0px 10px 0px
+		text-decoration none
+		cursor pointer
+		span
+			padding-right 7px
+			&:hover
+				color $lighterLinkColor
+
+
+.help-user
+	.help-message
+		width 100%
+		color whitesmoke
+		text-align center
+		line-height $smallFontSize + 10
+		font-size $smallFontSize
+		font-weight 100
+		.quick-description
+			margin 0% 15% 0% 15%
+			padding 10px 0px 10px 0px
+
+	.help-toggle // put this in middle of help message
+		color darken(white, 20%)
+		cursor pointer
+		position absolute
+		top 50px
+		right 15px
+		border-radius(0px 0px 3px 3px)
+		&:hover
+			color whitesmoke
+
+
+
+// somewhat centered
+.main-page-spinner
+	left 50%
+	top 10%
+	position relative
+
+// center this whole thing
+.branch-manager-container
+	position relative
+	width $mainListWidth
+	margin-left -($mainListWidth / 2)
+	left: 50%
+	padding-top 40px
+
+
+input-placeholder-mixin()
+	color rgba(255,255,255,.4)
+	text-shadow 0px 2px rgba(0,0,0,.3)
+
+::-webkit-input-placeholder
+	input-placeholder-mixin()
+::-moz-placeholder
+	input-placeholder-mixin()
+:-ms-input-placeholder
+	input-placeholder-mixin()
+
+// scroll bar for webkit (still need for firefox)
+::-webkit-scrollbar
+	width 10px
+	height 10px
+
+::-webkit-scrollbar-track
+	background-color transparent
+
+::-webkit-scrollbar-thumb
+	background-color rgba(50,48,46,0.8)
+
+
+input.enter-branch, textarea.comment-box
+	border 2px solid transparent // because we want a border when it's focused, this way it doesn't move around when they focus/unfocus
+	box-shadow 0 1px 0 rgba(255,255,255,.15), 0 2px 4px rgba(0,0,0,.2) inset, 0 0 3px rgba(255,255,255,.1)
+	background $inputBkg = darken($bodyBkg, 10%)
+	color white
+	&:focus
+		outline none
+		border 2px solid darken($builtBranchColor, 50%)
+		box-shadow none
+
+input.enter-branch
+	height 45px
+	padding 25px
+	font-size $largeFontSize
+	border-radius(13px)
+
+textarea.comment-box
+	padding 15px
+	font-size $smallestFontSize
+	border-radius(6px)
+
+
+.branch-manager
+	input.enter-branch, .branch-list
+		width 100%
+
+	.branch-list
+		font-family: Inconsolata
+		font-size $largeFontSize
+
+		.list-section-header
+			font-size $smallestFontSize
+			margin 20px 0px 5px 0px
+			color $subtextGray
+
+		li
+
+			line-height-and-height(50px)
+			display inline-block
+			width 100%
+			white-space nowrap
+			margin-left 20px
+			&:hover
+				background-color rgba(0,0,0,.05)
+
+			&.built-branch
+				.branch-name, .direct-url
+					color $builtBranchColor
+					cursor pointer
+					text-decoration underline
+					&:hover
+						color $lighterLinkColor
+					span
+						// this is the actual name of the branch
+						// we give it radius and padding because it is given a border on focus
+						border-radius $buttonBorderRadius
+						padding 3px
+						
+				.direct-url
+					float right
+					padding-right 30px
+					font-size $smallestFontSize
+
+				.port
+					color grey
+			&.not-built-branch
+				.branch-name
+					color white
+
+			&.building-branch, &.waiting-branch
+				.build-status
+					display inline-block
+					span
+						width $actionButtonWidth - $statusIconWidth
+				.status-spinner
+					width $statusIconWidth
+
+			.build-button-container
+				width $actionButtonWidth
+				display inline-block
+				text-align center
+
+			.branch-name, .direct-url
+				color rgb(255, 255, 255)
+				min-width 40px
+				display inline-block
+				vertical-align: bottom // got this from here: http://stackoverflow.com/questions/20566710/overflowhidden-displayinline-block-moves-text-upwards
+				overflow-x hidden
+				white-space nowrap
+				text-overflow ellipsis
+				text-decoration none // dont want underline url
+
+				i // the font-awsome url icon
+					font-size $smallFontSize
+					padding-left 5px
+
+			// the options to build/delete
+			.delete-branch, .build-branch, .build-status
+				font-size $smallFontSize
+
+			// This button css should be abstracted into a btn class
+			a.delete-branch, a.build-branch
+				cursor pointer
+				color $actionButtonColor
+				border 1px solid
+				border-color $transparentActionButtonColor
+				border-radius $buttonBorderRadius
+				padding 3px
+				text-decoration none
+
+			// give a highlight border when user tabs between buttons, links, etc
+			focus-mixin()
+				border 3px solid $builtBranchColor
+			a.delete-branch, a.build-branch
+				&:focus
+					focus-mixin()
+
+			&.built-branch .branch-name
+				&:focus
+					span
+						focus-mixin()
+
+			.delete-branch
+				&:hover
+					color $deleteColor
+					border-color $deleteColor
+			.build-branch
+				&:hover
+					color $buildColor
+					border-color $buildColor
+
+			.commit-message
+				font-size $smallFontSize
+				color $subtextGray
+				padding-left 15px
+
+.branch-page
+	width 100%
+	position absolute
+	top $chromeHeight
+	bottom 0px
+
+	// hold the branch iframe
+	.iframe-container
+		position absolute
+		top 50px
+		left 1%
+		background-color white
+		border 2px solid rgb(95, 168, 224)
+		.branch-url
+			position absolute
+			top -35px
+			font-weight 100
+			font-size 20px
+		a.branch-url
+			color $builtBranchColor
+			text-decoration none
+			left 0px
+			&hover
+				text-decoration underline
+

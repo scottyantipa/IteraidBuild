@@ -1,0 +1,293 @@
+@font-face {
+  font-family: Inconsolata;
+  font-style: normal;
+  src: url("../fonts/Inconsolata/Inconsolata-Bold.ttf"), url("../fonts/Inconsolata/Inconsolata-Regular.ttf");
+  src: local('Inconsolata Regular') url("../fonts/Inconsolata/Inconsolata-Regular.ttf") format('truetype');
+}
+body {
+  background-color: #393e50;
+  color: #f5f5f5;
+  font-family: sans-serif;
+}
+.app-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.chrome {
+  background-color: #2e3240;
+  line-height: 35px;
+  height: 35px;
+}
+.chrome span {
+  padding-left: 15px;
+}
+.chrome .logo,
+.chrome .catch-phrase {
+  font-family: Inconsolata;
+}
+.chrome .logo a {
+  color: #f5f5f5;
+  font-size: 21px;
+  cursor: pointer;
+}
+.chrome .logo a:hover {
+  text-decoration: underline;
+}
+.chrome .catch-phrase {
+  font-size: 14px;
+  color: #ccc;
+}
+.chrome .git-link {
+  float: right;
+  margin-right: 20px;
+}
+.git-link {
+  font-size: 31px;
+}
+.git-link a {
+  color: #05d6f3;
+  padding: 10px 0px 10px 0px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.git-link a span {
+  padding-right: 7px;
+}
+.git-link a span:hover {
+  color: #7fedfc;
+}
+.help-user .help-message {
+  width: 100%;
+  color: #f5f5f5;
+  text-align: center;
+  line-height: 27px;
+  font-size: 17px;
+  font-weight: 100;
+}
+.help-user .help-message .quick-description {
+  margin: 0% 15% 0% 15%;
+  padding: 10px 0px 10px 0px;
+}
+.help-user .help-toggle {
+  color: #ccc;
+  cursor: pointer;
+  position: absolute;
+  top: 50px;
+  right: 15px;
+  -webkit-border-radius: 0px 0px 3px 3px;
+  border-radius: 0px 0px 3px 3px;
+}
+.help-user .help-toggle:hover {
+  color: #f5f5f5;
+}
+.main-page-spinner {
+  left: 50%;
+  top: 10%;
+  position: relative;
+}
+.branch-manager-container {
+  position: relative;
+  width: 70%;
+  margin-left: -35%;
+  left: 50%;
+  padding-top: 40px;
+}
+::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.4);
+  text-shadow: 0px 2px rgba(0,0,0,0.3);
+}
+::-moz-placeholder {
+  color: rgba(255,255,255,0.4);
+  text-shadow: 0px 2px rgba(0,0,0,0.3);
+}
+:-ms-input-placeholder {
+  color: rgba(255,255,255,0.4);
+  text-shadow: 0px 2px rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(50,48,46,0.8);
+}
+input.enter-branch,
+textarea.comment-box {
+  border: 2px solid transparent;
+  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2) inset, 0 0 3px rgba(255,255,255,0.1);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.15), 0 2px 4px rgba(0,0,0,0.2) inset, 0 0 3px rgba(255,255,255,0.1);
+  background: #333848;
+  color: #fff;
+}
+input.enter-branch:focus,
+textarea.comment-box:focus {
+  outline: none;
+  border: 2px solid #036b7a;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+input.enter-branch {
+  height: 45px;
+  padding: 25px;
+  font-size: 21px;
+  -webkit-border-radius: 13px;
+  border-radius: 13px;
+}
+textarea.comment-box {
+  padding: 15px;
+  font-size: 14px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.branch-manager input.enter-branch,
+.branch-manager .branch-list {
+  width: 100%;
+}
+.branch-manager .branch-list {
+  font-family: Inconsolata;
+  font-size: 21px;
+}
+.branch-manager .branch-list .list-section-header {
+  font-size: 14px;
+  margin: 20px 0px 5px 0px;
+  color: #ccc;
+}
+.branch-manager .branch-list li {
+  line-height: 50px;
+  height: 50px;
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+.branch-manager .branch-list li:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+.branch-manager .branch-list li.built-branch .branch-name,
+.branch-manager .branch-list li.built-branch .direct-url {
+  color: #05d6f3;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.branch-manager .branch-list li.built-branch .branch-name:hover,
+.branch-manager .branch-list li.built-branch .direct-url:hover {
+  color: #7fedfc;
+}
+.branch-manager .branch-list li.built-branch .branch-name span,
+.branch-manager .branch-list li.built-branch .direct-url span {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 3px;
+}
+.branch-manager .branch-list li.built-branch .direct-url {
+  float: right;
+  padding-right: 30px;
+  font-size: 14px;
+}
+.branch-manager .branch-list li.built-branch .port {
+  color: #808080;
+}
+.branch-manager .branch-list li.not-built-branch .branch-name {
+  color: #fff;
+}
+.branch-manager .branch-list li.building-branch .build-status,
+.branch-manager .branch-list li.waiting-branch .build-status {
+  display: inline-block;
+}
+.branch-manager .branch-list li.building-branch .build-status span,
+.branch-manager .branch-list li.waiting-branch .build-status span {
+  width: 100px;
+}
+.branch-manager .branch-list li.building-branch .status-spinner,
+.branch-manager .branch-list li.waiting-branch .status-spinner {
+  width: 10px;
+}
+.branch-manager .branch-list li .build-button-container {
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+}
+.branch-manager .branch-list li .branch-name,
+.branch-manager .branch-list li .direct-url {
+  color: #fff;
+  min-width: 40px;
+  display: inline-block;
+  vertical-align: bottom;
+  overflow-x: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+.branch-manager .branch-list li .branch-name i,
+.branch-manager .branch-list li .direct-url i {
+  font-size: 17px;
+  padding-left: 5px;
+}
+.branch-manager .branch-list li .delete-branch,
+.branch-manager .branch-list li .build-branch,
+.branch-manager .branch-list li .build-status {
+  font-size: 17px;
+}
+.branch-manager .branch-list li a.delete-branch,
+.branch-manager .branch-list li a.build-branch {
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid;
+  border-color: rgba(255,255,255,0.5);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 3px;
+  text-decoration: none;
+}
+.branch-manager .branch-list li a.delete-branch:focus,
+.branch-manager .branch-list li a.build-branch:focus {
+  border: 3px solid #05d6f3;
+}
+.branch-manager .branch-list li.built-branch .branch-name:focus span {
+  border: 3px solid #05d6f3;
+}
+.branch-manager .branch-list li .delete-branch:hover {
+  color: #d62626;
+  border-color: #d62626;
+}
+.branch-manager .branch-list li .build-branch:hover {
+  color: #0ce40c;
+  border-color: #0ce40c;
+}
+.branch-manager .branch-list li .commit-message {
+  font-size: 17px;
+  color: #ccc;
+  padding-left: 15px;
+}
+.branch-page {
+  width: 100%;
+  position: absolute;
+  top: 35px;
+  bottom: 0px;
+}
+.branch-page .iframe-container {
+  position: absolute;
+  top: 50px;
+  left: 1%;
+  background-color: #fff;
+  border: 2px solid #5fa8e0;
+}
+.branch-page .iframe-container .branch-url {
+  position: absolute;
+  top: -35px;
+  font-weight: 100;
+  font-size: 20px;
+}
+.branch-page .iframe-container a.branch-url {
+  color: #05d6f3;
+  text-decoration: none;
+  left: 0px;
+}
+.branch-page .iframe-container a.branch-urlhover {
+  text-decoration: underline;
+}

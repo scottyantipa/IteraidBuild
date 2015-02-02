@@ -1,0 +1,11 @@
+{
+	"repoName": "IteraidTest",
+	"repoSSH": "git@github.com:scottyantipa/IteraidTest.git",
+	"indexHTMLName": "index.html",
+	"startPort": "60000",
+	"mongoPort": "27017",
+	"hostName": "localhost",
+	"apiHost": "localhost",
+	"mainPort": "7000",
+	"UIPort": "7001"
+}
